@@ -2,6 +2,11 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, "data")
+
 # =========================
 # PAGE CONFIG
 # =========================
@@ -30,12 +35,9 @@ def compute_kpis(df):
 
 @st.cache_data
 def load_actuals_and_roster_data():
-    actuals = pd.read_excel(
-        r"C:/Users/dethomas/OneDrive - Costa Pty Ltd/Desktop/Forecast Acuuarcy Tracking/Actuals.xlsx"
-    )
-    forecast = pd.read_excel(
-        r"C:/Users/dethomas/OneDrive - Costa Pty Ltd/Desktop/Forecast Acuuarcy Tracking/Roster_Data.xlsx"
-    )
+    actuals = pd.read_excel(os.path.join(DATA_DIR, "Actuals.xlsx"))
+    forecast = pd.read_excel(os.path.join(DATA_DIR, "Roster_Data.xlsx"))
+
     actuals.columns = actuals.columns.str.strip()
     forecast.columns = forecast.columns.str.strip()
     return actuals, forecast
@@ -43,7 +45,7 @@ def load_actuals_and_roster_data():
 @st.cache_data
 def load_week_out_with_season():
     df = pd.read_excel(
-        r"C:/Users/dethomas/OneDrive - Costa Pty Ltd/Desktop/Forecast Acuuarcy Tracking/4-week-out packed forecast with Fiscal_Week_and_Season.xlsx"
+        os.path.join(DATA_DIR, "4-week-out packed forecast with Fiscal_Week_and_Season.xlsx")
     )
     df.columns = df.columns.str.strip()
     return df
