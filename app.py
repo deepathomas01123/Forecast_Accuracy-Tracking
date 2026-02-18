@@ -341,7 +341,7 @@ elif selected_tab == "Weekly Analysis":
     category_sel = st.sidebar.multiselect(
         "Product Category",
         options= category_list,
-        default= [category_list[0]] # Set "All" as default
+        default= [category_list[0]], # Set "All" as default
         key="wk_category"
     )
 
