@@ -317,7 +317,7 @@ elif selected_tab == "Weekly Analysis":
     season_sel = st.sidebar.multiselect(
         "Season",
         options=season_list,
-        default=season_list,
+        default=[season_list[0]],
         key="wk_season"
     )
 
