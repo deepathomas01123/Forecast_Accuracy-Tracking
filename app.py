@@ -340,8 +340,8 @@ elif selected_tab == "Weekly Analysis":
     category_list = sorted(df_week["Product Category"].dropna().unique())
     category_sel = st.sidebar.multiselect(
         "Product Category",
-        options=["All"] + category_list,
-        default=["All"],  # Set "All" as default
+        options= category_list,
+        default= [category_list[0]] # Set "All" as default
         key="wk_category"
     )
 
